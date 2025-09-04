@@ -1,4 +1,4 @@
-name: deploy to main
+name: Deploy to GitHub Pages
 
 on:
   push:
@@ -6,10 +6,19 @@ on:
       - main
 
 permissions:
-  contents: write
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
 
 jobs:
   deploy:
+    eoymentnvironment:
+      name: github-pages
+      url: ${{ steps.depl.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,10 +36,14 @@ jobs:
       - name: Build
         run: npm run build
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4.5.0
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: gh-pages
-          folder: build
-          clean: true
-          commit-message: "Deploy to GitHub Pages"
+          path: "./dist"
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
