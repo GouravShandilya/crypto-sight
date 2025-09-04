@@ -16,9 +16,9 @@ concurrency:
 
 jobs:
   deploy:
-    eoymentnvironment:
+    environment:
       name: github-pages
-      url: ${{ steps.depl.outputs.page_url }}
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
