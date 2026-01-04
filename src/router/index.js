@@ -13,6 +13,10 @@ const routes = [
     name: "Dashboard",
     component: Dashboard,
   },
+  {
+    path: "/:pathMatch(.*)*",
+    redirect: "/",
+  },
 ];
 
 const router = createRouter({

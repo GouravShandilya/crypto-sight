@@ -1,22 +1,20 @@
-<script setup>
-import { Activity, ChevronRight } from "lucide-vue-next";
-import ConnectWallet from "@/components/ConnectWallet.vue";
-</script>
-
 <template>
   <header
     class="glass sticky w-full top-0 z-50 mx-auto backdrop-blur-md flex items-center justify-between container"
   >
     <div class="container mx-auto px-6 py-4">
       <div class="flex items-center justify-between">
-        <div class="flex items-center space-x-3 animate-slide-in-left">
+        <RouterLink
+          to="/"
+          class="flex items-center space-x-3 animate-slide-in-left"
+        >
           <div
             class="w-10 h-10 gradient-primary rounded-lg flex items-center justify-center"
           >
             <Activity class="w-6 h-6 text-white" />
           </div>
           <h1 class="text-2xl font-bold">CryptoSight</h1>
-        </div>
+        </RouterLink>
         <div
           class="flex items-center gap-[4rem] animate-slide-in-right"
           v-if="false"
@@ -52,6 +50,10 @@ import ConnectWallet from "@/components/ConnectWallet.vue";
     </div>
   </header>
 </template>
+<script setup>
+import { Activity } from "lucide-vue-next";
+import ConnectWallet from "@/components/ConnectWallet.vue";
+</script>
 <style scoped>
 .glass {
   backdrop-filter: blur(10px);

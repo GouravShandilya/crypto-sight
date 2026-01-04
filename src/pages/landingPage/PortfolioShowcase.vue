@@ -1,7 +1,3 @@
-<script setup>
-import { Wallet, BarChart3, Bell, ChevronRight } from "lucide-vue-next";
-</script>
-
 <template>
   <section class="py-20 bg-card/20">
     <div class="container mx-auto px-6">
@@ -46,9 +42,9 @@ import { Wallet, BarChart3, Bell, ChevronRight } from "lucide-vue-next";
 
           <router-link
             to="/dashboard"
-            class="btn-primary hover-lift hover-glow text-lg px-8 py-4 rounded-xl"
+            class="btn-primary hover-lift hover-glow text-lg px-8 py-4 rounded-xl whitespace-nowrap flex items-center justify-start bg-gradient-to-r from-gray-500 to-gray-700 w-fit"
           >
-            <span>Try It Now</span>
+            <span class="font-bold">Try It Now</span>
             <ChevronRight class="w-5 h-5 ml-2" />
           </router-link>
         </div>
@@ -104,3 +100,6 @@ import { Wallet, BarChart3, Bell, ChevronRight } from "lucide-vue-next";
     </div>
   </section>
 </template>
+<script setup>
+import { Wallet, BarChart3, Bell, ChevronRight } from "lucide-vue-next";
+</script>

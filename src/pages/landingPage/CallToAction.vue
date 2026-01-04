@@ -1,7 +1,3 @@
-<script setup>
-import { TrendingUp } from "lucide-vue-next";
-</script>
-
 <template>
   <section class="py-20">
     <div class="container mx-auto px-6">
@@ -11,7 +7,7 @@ import { TrendingUp } from "lucide-vue-next";
         <h2 class="text-4xl font-bold text-foreground mb-4">
           Ready to Take Control of Your
           <span
-            class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+            class="bg-gradient-to-r from-gray-500 to-gray-700 bg-clip-text text-transparent"
             >Crypto Journey?</span
           >
         </h2>

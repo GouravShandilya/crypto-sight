@@ -1,35 +1,3 @@
-<script setup>
-import { ref } from "vue";
-import { Activity, BarChart3, Globe, Shield } from "lucide-vue-next";
-
-const features = ref([
-  {
-    icon: Activity,
-    title: "Real-Time Tracking",
-    description: "Monitor cryptocurrency prices with live updates every minute",
-    color: "text-green-400",
-  },
-  {
-    icon: BarChart3,
-    title: "Portfolio Analytics",
-    description: "Advanced analytics to track your portfolio performance",
-    color: "text-blue-400",
-  },
-  {
-    icon: Globe,
-    title: "Global News Feed",
-    description: "Stay updated with latest crypto news and market insights",
-    color: "text-purple-400",
-  },
-  {
-    icon: Shield,
-    title: "Secure & Private",
-    description: "Your data stays secure with advanced encryption",
-    color: "text-orange-400",
-  },
-]);
-</script>
-
 <template>
   <section id="features" class="py-20">
     <div class="container mx-auto px-6">
@@ -37,7 +5,7 @@ const features = ref([
         <h2 class="text-4xl font-bold text-white mb-4">
           Why Choose
           <span
-            class="bg-gradient-to-r from-purple-400 to-pink-400 bg-clip-text text-transparent"
+            class="bg-gradient-to-r from-gray-500 to-gray-700 bg-clip-text text-transparent"
             >CryptoSight</span
           >
         </h2>
@@ -71,3 +39,34 @@ const features = ref([
     </div>
   </section>
 </template>
+<script setup>
+import { ref } from "vue";
+import { Activity, BarChart3, Globe, Shield } from "lucide-vue-next";
+
+const features = ref([
+  {
+    icon: Activity,
+    title: "Real-Time Tracking",
+    description: "Monitor cryptocurrency prices with live updates every minute",
+    color: "text-green-400",
+  },
+  {
+    icon: BarChart3,
+    title: "Portfolio Analytics",
+    description: "Advanced analytics to track your portfolio performance",
+    color: "text-blue-400",
+  },
+  {
+    icon: Globe,
+    title: "Global News Feed",
+    description: "Stay updated with latest crypto news and market insights",
+    color: "text-purple-400",
+  },
+  {
+    icon: Shield,
+    title: "Secure & Private",
+    description: "Your data stays secure with advanced encryption",
+    color: "text-orange-400",
+  },
+]);
+</script>

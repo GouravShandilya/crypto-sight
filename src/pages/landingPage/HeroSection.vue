@@ -1,54 +1,7 @@
-<script setup>
-import { ref, onMounted } from "vue";
-import { TrendingUp } from "lucide-vue-next";
-import axios from "axios";
-
-const heroStats = ref({
-  totalMarketCap: 0,
-  btcPrice: 0,
-  ethPrice: 0,
-  loading: true,
-});
-
-const fetchHeroData = async () => {
-  try {
-    const response = await axios.get(
-      "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_market_cap=true"
-    );
-
-    heroStats.value = {
-      totalMarketCap:
-        response.data.bitcoin.usd_market_cap +
-        response.data.ethereum.usd_market_cap,
-      btcPrice: response.data.bitcoin.usd,
-      ethPrice: response.data.ethereum.usd,
-      loading: false,
-    };
-  } catch (error) {
-    console.error("Error fetching hero data:", error);
-    heroStats.value.loading = false;
-  }
-};
-
-const formatPrice = (price) => {
-  return new Intl.NumberFormat("en-US", {
-    style: "currency",
-    currency: "USD",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
-  }).format(price);
-};
-
-onMounted(() => {
-  fetchHeroData();
-});
-</script>
-
 <template>
   <section
     class="relative overflow-hidden min-h-[90vh] flex items-center justify-center gap-12"
   >
-    <!-- <div class="absolute inset-0"></div> -->
     <div
       class="container px-6 py-20 relative flex items-center justify-end"
       style="width: fit-content; margin-left: 0%; margin-right: 0%"
@@ -111,7 +64,7 @@ onMounted(() => {
         <div class="flex flex-col sm:flex-row gap-4 justify-start items-center">
           <router-link
             to="/dashboard"
-            class="bg-gradient-to-r from-purple-500 to-pink-500 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 flex items-center space-x-2 shadow-lg shadow-purple-500/25 hover-lift"
+            class="bg-gradient-to-r from-gray-500 to-gray-700 text-white px-8 py-4 rounded-xl font-semibold text-lg hover:from-gray-600 hover:to-gray-700 transition-all duration-300 flex items-center space-x-2 shadow-lg shadow-gray-500/25 hover-lift"
           >
             <span>Start Tracking Now</span>
             <TrendingUp class="w-5 h-5" />
@@ -126,7 +79,7 @@ onMounted(() => {
         </div>
       </div>
     </div>
-    <div class="svg animate">
+    <div class="pointer-events-none animate-spin-slow scale-110 blur-[0px]">
       <img
         src="@/assets/logo.svg"
         alt="logo"
@@ -136,21 +89,49 @@ onMounted(() => {
     </div>
   </section>
 </template>
-<style scoped>
-.animate {
-  pointer-events: none;
-  animation: rotate 12s linear infinite;
-}
-@keyframes rotate {
-  0% {
-    scale: 1.1;
-    transform: rotate(0deg);
-    filter: blur(1px);
+
+<script setup>
+import axios from "axios";
+import { ref, onMounted } from "vue";
+import { TrendingUp } from "lucide-vue-next";
+
+const heroStats = ref({
+  totalMarketCap: 0,
+  btcPrice: 0,
+  ethPrice: 0,
+  loading: true,
+});
+
+const fetchHeroData = async () => {
+  try {
+    const response = await axios.get(
+      "https://api.coingecko.com/api/v3/simple/price?ids=bitcoin,ethereum&vs_currencies=usd&include_market_cap=true"
+    );
+
+    heroStats.value = {
+      totalMarketCap:
+        response.data.bitcoin.usd_market_cap +
+        response.data.ethereum.usd_market_cap,
+      btcPrice: response.data.bitcoin.usd,
+      ethPrice: response.data.ethereum.usd,
+      loading: false,
+    };
+  } catch (error) {
+    console.error("Error fetching hero data:", error);
+    heroStats.value.loading = false;
   }
-  100% {
-    scale: 1.1;
-    transform: rotate(360deg);
-    filter: blur(1px);
-  }
-}
-</style>
+};
+
+const formatPrice = (price) => {
+  return new Intl.NumberFormat("en-US", {
+    style: "currency",
+    currency: "USD",
+    minimumFractionDigits: 0,
+    maximumFractionDigits: 0,
+  }).format(price);
+};
+
+onMounted(() => {
+  fetchHeroData();
+});
+</script>

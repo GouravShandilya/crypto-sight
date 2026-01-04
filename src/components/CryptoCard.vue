@@ -48,7 +48,7 @@ const generateSparklinePoints = (sparkline) => {
   <div class="p-4 cursor-pointer transition-all duration-200">
     <div class="flex items-center justify-between">
       <!-- Left: Coin Info -->
-      <div class="flex items-center space-x-4 flex-1">
+      <div class="flex items-center space-x-4 flex-1 truncate">
         <div class="flex items-center space-x-3">
           <img
             :src="crypto.image"
@@ -119,7 +119,7 @@ const generateSparklinePoints = (sparkline) => {
       </div>
 
       <!-- Market Cap -->
-      <div class="text-right text-sm text-gray-400 flex-1 ml-4">
+      <div class="text-right text-sm text-gray-400 flex-1 ml-4 md:block hidden">
         <div>{{ formatNumber(crypto.market_cap) }}</div>
         <div class="text-xs">Market Cap</div>
       </div>
