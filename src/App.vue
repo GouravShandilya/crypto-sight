@@ -1,5 +1,12 @@
 <script setup>
-// Router will handle the page navigation
+import { onMounted } from "vue";
+import { usePortfolioStore } from "@/stores/portfolioStore";
+
+const portfolioStore = usePortfolioStore();
+
+onMounted(() => {
+  portfolioStore.init();
+});
 </script>
 
 <template>

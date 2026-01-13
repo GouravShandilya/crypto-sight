@@ -23,6 +23,9 @@ const timeRanges = [
 ];
 
 const fetchChartData = async () => {
+  setTimeout(() => {
+    loading.value = false;
+  }, 500); // Simulate loading delay
   if (!props.crypto) return;
 
   loading.value = true;

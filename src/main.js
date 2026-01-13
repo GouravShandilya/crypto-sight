@@ -1,5 +1,8 @@
 import "./assets/main.css";
 import { createApp } from "vue";
+import { createPinia } from "pinia";
+import { VueQueryPlugin } from "@tanstack/vue-query";
+import { wagmiAdapter } from "./config/wagmi";
 import App from "./App.vue";
 import router from "./router";
 
@@ -21,4 +24,10 @@ const initializeTheme = () => {
 // Initialize theme before mounting the app
 initializeTheme();
 
-createApp(App).use(router).mount("#app");
+const app = createApp(App);
+
+app.use(createPinia());
+app.use(router);
+app.use(VueQueryPlugin);
+
+app.mount("#app");
